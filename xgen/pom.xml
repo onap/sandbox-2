@@ -51,7 +51,16 @@
 	<organizationUrl></organizationUrl>
 		</developer>
 	</developers>
-	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.cadiVersion>1.0.0-SNAPSHOT</project.cadiVersion>
+		<nexusproxy>https://nexus.onap.org</nexusproxy>
+		<snapshotNexusPath>/content/repositories/snapshots/</snapshotNexusPath>
+		<releaseNexusPath>/content/repositories/releases/</releaseNexusPath>
+		<stagingNexusPath>/content/repositories/staging/</stagingNexusPath>
+		<sitePath>/content/sites/site/org/onap/aaf/inno/${project.version}</sitePath>
+
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.att.inno</groupId>
@@ -60,27 +69,15 @@
 		</dependency>
 	</dependencies>
 	
-	<distributionManagement>
-    		<snapshotRepository>
-      			<id>ossrhdme</id>
-      			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    		</snapshotRepository>
-    		<repository>
-      			<id>ossrhdme</id>
-      			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    		</repository>
-	</distributionManagement>
 	
-	<scm>
-		<connection>https://github.com/att/AAF.git</connection>
-		<developerConnection>${project.scm.connection}</developerConnection>
-		<url>http://github.com/att/AAF/tree/master</url>
-	</scm>
+	
+	
 	<build>
 		<plugins>
 			<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.0.0-M1</version>
 			<configuration>
 			<failOnError>false</failOnError>
 			</configuration>
@@ -109,20 +106,60 @@
 		      </executions>
 		    </plugin>
 
-
-			<plugin>
+        <plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
 				<version>1.6.7</version>
 				<extensions>true</extensions>
 				<configuration>
-				<serverId>ossrhdme</serverId>
-				<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-				<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<nexusUrl>${nexusproxy}</nexusUrl>
+					<serverId>ecomp-staging</serverId>
 				</configuration>
 			</plugin>
 			
 		</plugins>
 	</build>
-
+		
+<distributionManagement>
+		<repository>
+			<id>ecomp-releases</id>
+			<name>AAF Release Repository</name>
+			<url>${nexusproxy}/${releaseNexusPath}</url>
+		</repository>
+		<snapshotRepository>
+			<id>ecomp-snapshots</id>
+			<name>AAF Snapshot Repository</name>
+			<url>${nexusproxy}/${snapshotNexusPath}</url>
+		</snapshotRepository>
+	</distributionManagement>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>onap-plugin-snapshots</id>
+            <url>https://nexus.onap.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
+	
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven 2 repository 2</name>
+			<url>http://repo2.maven.org/maven2/</url>
+		</repository>
+		<repository>
+            <id>onap-jar-snapshots</id>
+            <url>https://nexus.onap.org/content/repositories/snapshots</url>
+        </repository>
+		<repository>
+			<id>spring-repo</id>
+			<name>Spring repo</name>
+			<url>https://artifacts.alfresco.com/nexus/content/repositories/public/</url>
+		</repository>
+		<repository>
+			<id>repository.jboss.org-public</id>
+			<name>JBoss.org Maven repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+	
+	
 </project>
