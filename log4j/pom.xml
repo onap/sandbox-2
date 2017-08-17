@@ -125,6 +125,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<nexusUrl>${nexusproxy}</nexusUrl>
+					<stagingProfileId>176c31dfe190a</stagingProfileId>
 					<serverId>ecomp-staging</serverId>
 				</configuration>
 			</plugin>
