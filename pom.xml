@@ -26,7 +26,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.att.inno</groupId>
 	<artifactId>parent</artifactId>
-	<name>Parent POM for JG Innovation</name>
+	<name>inno</name>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<url>https://github.com/att/AAF</url>
@@ -60,7 +60,7 @@
 		<snapshotNexusPath>/content/repositories/snapshots/</snapshotNexusPath>
 		<releaseNexusPath>/content/repositories/releases/</releaseNexusPath>
 		<stagingNexusPath>/content/repositories/staging/</stagingNexusPath>
-		<sitePath>/content/sites/site/org/onap/aaf/inno/${project.version}</sitePath>
+		<sitePath>/content/sites/site/org/onap/aaf/inno/${project.artifactId}/${project.version}</sitePath>
 	</properties>
 
 	<dependencies>
@@ -146,6 +146,10 @@
 			<name>AAF Snapshot Repository</name>
 			<url>${nexusproxy}${snapshotNexusPath}</url>
 		</snapshotRepository>
+		<site>
+			<id>ecomp-site</id>
+			<url>dav:${nexusproxy}${sitePath}</url>
+		</site>
 	</distributionManagement>
 <pluginRepositories>
         <pluginRepository>

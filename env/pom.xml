@@ -58,7 +58,7 @@
 		<snapshotNexusPath>/content/repositories/snapshots/</snapshotNexusPath>
 		<releaseNexusPath>/content/repositories/releases/</releaseNexusPath>
 		<stagingNexusPath>/content/repositories/staging/</stagingNexusPath>
-		<sitePath>/content/sites/site/org/onap/aaf/inno/${project.version}</sitePath>
+		<sitePath>/content/sites/site/${project.groupId}/${project.artifactId}/${project.version}</sitePath>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -109,6 +109,10 @@
 			<name>AAF Snapshot Repository</name>
 			<url>${nexusproxy}${snapshotNexusPath}</url>
 		</snapshotRepository>
+		<site>
+			<id>ecomp-site</id>
+			<url>dav:${nexusproxy}${sitePath}</url>
+		</site>
 	</distributionManagement>
 <pluginRepositories>
         <pluginRepository>
