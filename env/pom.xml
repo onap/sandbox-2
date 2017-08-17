@@ -119,12 +119,12 @@
 		<repository>
 			<id>ecomp-releases</id>
 			<name>AAF Release Repository</name>
-			<url>${nexusproxy}/${releaseNexusPath}</url>
+			<url>${nexusproxy}${releaseNexusPath}</url>
 		</repository>
 		<snapshotRepository>
 			<id>ecomp-snapshots</id>
 			<name>AAF Snapshot Repository</name>
-			<url>${nexusproxy}/${snapshotNexusPath}</url>
+			<url>${nexusproxy}${snapshotNexusPath}</url>
 		</snapshotRepository>
 	</distributionManagement>
 <pluginRepositories>
