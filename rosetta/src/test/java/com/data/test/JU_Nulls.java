@@ -24,11 +24,10 @@ package com.data.test;
 
 import org.junit.AfterClass;
 import org.junit.Test;
-
-import com.att.inno.env.Data;
-import com.att.rosetta.env.RosettaDF;
-import com.att.rosetta.env.RosettaData;
-import com.att.rosetta.env.RosettaEnv;
+import org.onap.inno.env.Data;
+import org.onap.rosetta.env.RosettaDF;
+import org.onap.rosetta.env.RosettaData;
+import org.onap.rosetta.env.RosettaEnv;
 
 import junit.framework.Assert;
 import s.xsd.LargerData;

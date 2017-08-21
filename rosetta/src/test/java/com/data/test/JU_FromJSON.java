@@ -26,20 +26,19 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import org.junit.Test;
-
-import com.att.inno.env.Env;
-import com.att.inno.env.LogTarget;
-import com.att.inno.env.TimeTaken;
-import com.att.inno.env.Trans;
-import com.att.inno.env.impl.EnvFactory;
-import com.att.inno.env.jaxb.JAXBmar;
-import com.att.inno.env.util.IndentPrintWriter;
-import com.att.inno.env.util.StringBuilderWriter;
-import com.att.rosetta.InJson;
-import com.att.rosetta.Out;
-import com.att.rosetta.OutJson;
-import com.att.rosetta.OutRaw;
-import com.att.rosetta.OutXML;
+import org.onap.inno.env.Env;
+import org.onap.inno.env.LogTarget;
+import org.onap.inno.env.TimeTaken;
+import org.onap.inno.env.Trans;
+import org.onap.inno.env.impl.EnvFactory;
+import org.onap.inno.env.jaxb.JAXBmar;
+import org.onap.inno.env.util.IndentPrintWriter;
+import org.onap.inno.env.util.StringBuilderWriter;
+import org.onap.rosetta.InJson;
+import org.onap.rosetta.Out;
+import org.onap.rosetta.OutJson;
+import org.onap.rosetta.OutRaw;
+import org.onap.rosetta.OutXML;
 
 import junit.framework.Assert;
 import s.xsd.LargerData;

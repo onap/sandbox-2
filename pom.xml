@@ -24,7 +24,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.att.inno</groupId>
+	<groupId>org.onap.inno</groupId>
 	<artifactId>parent</artifactId>
 	<name>inno</name>
 	<version>1.0.0-SNAPSHOT</version>
@@ -205,12 +205,12 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.att.cadi</groupId>
+				<groupId>org.onap.cadi</groupId>
 				<artifactId>cadi-core</artifactId>
 				<version>${project.cadiVersion}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.att.cadi</groupId>
+				<groupId>org.onap.cadi</groupId>
 				<artifactId>cadi-aaf</artifactId>
 				<version>${project.cadiVersion}</version>
 			</dependency>

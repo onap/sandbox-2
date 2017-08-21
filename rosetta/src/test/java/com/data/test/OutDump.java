@@ -25,11 +25,11 @@ package com.data.test;
 import java.io.IOException;
 import java.io.Writer;
 
-import com.att.inno.env.util.IndentPrintWriter;
-import com.att.rosetta.Out;
-import com.att.rosetta.Parse;
-import com.att.rosetta.ParseException;
-import com.att.rosetta.Parsed;
+import org.onap.inno.env.util.IndentPrintWriter;
+import org.onap.rosetta.Out;
+import org.onap.rosetta.Parse;
+import org.onap.rosetta.ParseException;
+import org.onap.rosetta.Parsed;
 
 public class OutDump extends Out{
 

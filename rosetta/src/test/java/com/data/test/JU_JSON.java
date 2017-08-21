@@ -28,13 +28,12 @@ import java.io.StringReader;
 import java.io.StringWriter;
 
 import org.junit.Test;
-
-import com.att.rosetta.InJson;
-import com.att.rosetta.Out;
-import com.att.rosetta.OutJson;
-import com.att.rosetta.OutRaw;
-import com.att.rosetta.Parse;
-import com.att.rosetta.ParseException;
+import org.onap.rosetta.InJson;
+import org.onap.rosetta.Out;
+import org.onap.rosetta.OutJson;
+import org.onap.rosetta.OutRaw;
+import org.onap.rosetta.Parse;
+import org.onap.rosetta.ParseException;
 
 import junit.framework.Assert;
 

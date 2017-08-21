@@ -23,7 +23,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <parent>
-		<groupId>com.att.inno</groupId>
+		<groupId>org.onap.inno</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
@@ -61,18 +61,18 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.att.inno</groupId>
+			<groupId>org.onap.inno</groupId>
 			<artifactId>env</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		
 		<!-- dependency>
-			<groupId>com.att.cadi</groupId>
+			<groupId>org.onap.cadi</groupId>
 			<artifactId>cadi-core</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.att.aft</groupId>
+			<groupId>org.onap.aft</groupId>
 			<artifactId>dme2</artifactId>
 			<scope>provided</scope>
 		</dependency-->
