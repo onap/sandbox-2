@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_072ffca2",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-08-22T21:31:18Z",
+      "side": 1,
+      "message": "This is wrong.. \nit should be org.onap.aaf.inno",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "9b293974b9c0b46eaa9ec6e2839c9cf306852110",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_e72bd892",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-08-22T21:31:18Z",
+      "side": 1,
+      "message": "This is wrong.. \nit should be org.onap.aaf.cadi",
+      "range": {
+        "startLine": 208,
+        "startChar": 13,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "9b293974b9c0b46eaa9ec6e2839c9cf306852110",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_a71dd075",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-08-22T21:31:18Z",
+      "side": 1,
+      "message": "This is wrong.. \nit should be org.onap.aaf.cadi",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 26
+      },
+      "revId": "9b293974b9c0b46eaa9ec6e2839c9cf306852110",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
