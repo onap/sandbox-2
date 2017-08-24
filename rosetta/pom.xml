@@ -105,7 +105,7 @@
 				<configuration>
 					<outputDirectory>target</outputDirectory>
 					<includes>
-						<include>**/com/att/rosetta/**</include>
+						<include>**/org/onap/aaf/rosetta/**</include>
 					</includes>
 				</configuration>
 			</plugin>
