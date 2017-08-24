@@ -26,16 +26,15 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import org.junit.Test;
-
-import com.att.inno.env.TimeTaken;
-import com.att.inno.env.Trans;
-import com.att.inno.env.impl.EnvFactory;
-import com.att.inno.env.util.StringBuilderWriter;
-import com.att.rosetta.InJson;
-import com.att.rosetta.JaxInfo;
-import com.att.rosetta.OutJson;
-import com.att.rosetta.OutXML;
-import com.att.rosetta.Saved;
+import org.onap.aaf.inno.env.TimeTaken;
+import org.onap.aaf.inno.env.Trans;
+import org.onap.aaf.inno.env.impl.EnvFactory;
+import org.onap.aaf.inno.env.util.StringBuilderWriter;
+import org.onap.aaf.rosetta.InJson;
+import org.onap.aaf.rosetta.JaxInfo;
+import org.onap.aaf.rosetta.OutJson;
+import org.onap.aaf.rosetta.OutXML;
+import org.onap.aaf.rosetta.Saved;
 
 import s.xsd.LargerData;
 

@@ -23,8 +23,7 @@
 package com.data.test;
 
 import org.junit.Test;
-
-import com.att.rosetta.JaxInfo;
+import org.onap.aaf.rosetta.JaxInfo;
 
 import s.xsd.LargerData;
 

@@ -24,8 +24,8 @@ package com.data.test.obj;
 
 import java.util.List;
 
-import com.att.rosetta.marshal.ObjArray;
-import com.att.rosetta.marshal.ObjMarshal;
+import org.onap.aaf.rosetta.marshal.ObjArray;
+import org.onap.aaf.rosetta.marshal.ObjMarshal;
 
 import types.xsd.Multi;
 import types.xsd.Multi.Single;

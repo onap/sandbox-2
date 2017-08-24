@@ -25,9 +25,9 @@ package com.data.test;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.onap.aaf.rosetta.Ladder;
 
-import com.att.rosetta.Ladder;
+import static org.junit.Assert.*;
 
 public class JU_Ladder {
 

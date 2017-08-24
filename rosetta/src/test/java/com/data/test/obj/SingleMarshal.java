@@ -26,14 +26,14 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import com.att.rosetta.marshal.DataWriter;
-import com.att.rosetta.marshal.FieldArray;
-import com.att.rosetta.marshal.FieldDate;
-import com.att.rosetta.marshal.FieldDateTime;
-import com.att.rosetta.marshal.FieldHexBinary;
-import com.att.rosetta.marshal.FieldNumeric;
-import com.att.rosetta.marshal.FieldString;
-import com.att.rosetta.marshal.ObjMarshal;
+import org.onap.aaf.rosetta.marshal.DataWriter;
+import org.onap.aaf.rosetta.marshal.FieldArray;
+import org.onap.aaf.rosetta.marshal.FieldDate;
+import org.onap.aaf.rosetta.marshal.FieldDateTime;
+import org.onap.aaf.rosetta.marshal.FieldHexBinary;
+import org.onap.aaf.rosetta.marshal.FieldNumeric;
+import org.onap.aaf.rosetta.marshal.FieldString;
+import org.onap.aaf.rosetta.marshal.ObjMarshal;
 
 import types.xsd.Multi.Single;
 

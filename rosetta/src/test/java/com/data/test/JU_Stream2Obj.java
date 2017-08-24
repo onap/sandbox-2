@@ -28,20 +28,19 @@ import java.io.StringReader;
 import java.io.StringWriter;
 
 import org.junit.Test;
-
-import com.att.inno.env.APIException;
-import com.att.inno.env.Data;
-import com.att.inno.env.DataFactory;
-import com.att.inno.env.EnvJAXB;
-import com.att.inno.env.impl.BasicEnv;
-import com.att.rosetta.InJson;
-import com.att.rosetta.InXML;
-import com.att.rosetta.Out;
-import com.att.rosetta.OutJson;
-import com.att.rosetta.OutRaw;
-import com.att.rosetta.OutXML;
-import com.att.rosetta.Parse;
-import com.att.rosetta.ParseException;
+import org.onap.aaf.inno.env.APIException;
+import org.onap.aaf.inno.env.Data;
+import org.onap.aaf.inno.env.DataFactory;
+import org.onap.aaf.inno.env.EnvJAXB;
+import org.onap.aaf.inno.env.impl.BasicEnv;
+import org.onap.aaf.rosetta.InJson;
+import org.onap.aaf.rosetta.InXML;
+import org.onap.aaf.rosetta.Out;
+import org.onap.aaf.rosetta.OutJson;
+import org.onap.aaf.rosetta.OutRaw;
+import org.onap.aaf.rosetta.OutXML;
+import org.onap.aaf.rosetta.Parse;
+import org.onap.aaf.rosetta.ParseException;
 
 import inherit.DerivedA;
 import inherit.Root;

@@ -25,8 +25,8 @@ package com.data.test;
 import java.io.IOException;
 import java.io.Writer;
 
-import com.att.inno.env.Trans;
-import com.att.inno.env.Trans.Metric;
+import org.onap.aaf.inno.env.Trans;
+import org.onap.aaf.inno.env.Trans.Metric;
 
 public class Report {
 	float total;
