@@ -27,7 +27,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.onap.aaf.inno</groupId>
 	<artifactId>parent</artifactId>
-	<name>inno</name>
+	<name>aaf-inno</name>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<url>https://github.com/att/AAF</url>
