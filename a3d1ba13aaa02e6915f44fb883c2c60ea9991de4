@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_a5cd4887",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1599
+      },
+      "writtenOn": "2017-09-23T03:38:28Z",
+      "side": 1,
+      "message": "Nexus staging plug in not needed when you use oparent",
+      "range": {
+        "startLine": 133,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 12
+      },
+      "revId": "a3d1ba13aaa02e6915f44fb883c2c60ea9991de4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
