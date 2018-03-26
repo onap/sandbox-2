@@ -212,10 +212,6 @@
 	</distributionManagement>
 
 	<modules>
-		<module>env</module>
-		<module>xgen</module>
-		<module>rosetta</module>
-		<module>log4j</module>
 	</modules>
 
 	<dependencyManagement>
