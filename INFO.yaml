@@ -47,6 +47,6 @@ committers:
         email: 'vg411h@att.com'
         company: 'ATT'
         id: 'vg411h'
-        timezone: 'America/Dallas'
+        timezone: 'America/Dallas_city'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
