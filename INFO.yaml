@@ -50,3 +50,8 @@ committers:
         timezone: 'America/Dallas'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
+    changes:
+        - type: 'removal'
+          name: 'Bogus Name'
+          link: 'https://lists.onap.org/pipermail/Bogus.html'
+
