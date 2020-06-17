@@ -16,6 +16,7 @@ add_non_author_approval(S1, [label('Non-Author-Code-Review', need(_)) | S1]).
 submit_filter(In, Out) :-
 	In =.. [submit | Ls],
 	reject_multiple_files_if_INFO_file(Ls, R),
+	!,
 	Out =.. [submit | R].
 
 % =============
