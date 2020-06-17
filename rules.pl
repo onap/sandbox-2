@@ -10,3 +10,15 @@ add_non_author_approval(S1, S2) :-
     S2 = [label('Non-Author-Code-Review', ok(R)) | S1].
 add_non_author_approval(S1, [label('Non-Author-Code-Review', need(_)) | S1]).
 
+% =============
+% Remove special INFO.yaml label (since not info.yaml)
+% =============
+submit_filter(In, Out) :-
+	In =.. [submit | Ls],
+	remove_verified_info_yaml(Ls, R),
+	Out =.. [submit | R].
+
+remove_verified_info_yaml([], []).
+remove_verified_info_yaml([label('INFO-Verified', _) | T], R) :- remove_verified_info_yaml(T, R), !.
+remove_verified_info_yaml([H|T], [H|R]) :- remove_verified_info_yaml(T, R).
+
