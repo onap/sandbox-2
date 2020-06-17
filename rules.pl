@@ -41,3 +41,24 @@ reject_multiple_files_if_INFO_file(S1, S2) :-
 	% If anything is false, then reject with Label.
 	S2 = [label('INFO file has to be only file changed', reject(O))|S1].
 
+submit_rule(submit(CR, V, RV)) :-
+  needs_release_verified,
+  !,
+  gerrit:max_with_block(-1, 1, 'Release-Verified', RV),
+  gerrit:max_with_block(-2, 2, 'Code-Review', CR),
+  gerrit:max_with_block(-1, 1, 'Verified', V).
+
+submit_rule(submit(CR, V, IV)) :-
+  needs_info_verified,
+  !,
+  gerrit:max_with_block(-1, 1, 'INFO-Verified', IV),
+  gerrit:max_with_block(-2, 2, 'Code-Review', CR),
+  gerrit:max_with_block(-1, 1, 'Verified', V).
+
+submit_rule(submit(CR, V)) :-
+  gerrit:max_with_block(-2, 2, 'Code-Review', CR),
+  gerrit:max_with_block(-1, 1, 'Verified', V).
+
+needs_release_verified :- gerrit:commit_delta('^releases/'), !.
+needs_info_verified :- gerrit:commit_delta('INFO.yaml'), !.
+
