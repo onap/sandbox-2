@@ -39,7 +39,7 @@ reject_multiple_files_if_INFO_file(S1, S2) :-
 	% Check if one file name is INFO.yaml
 	gerrit:commit_delta('INFO.yaml'),
 	% If anything is false, then reject with Label.
-	S2 = [label('INFO file has to be only file changed', reject(O))|S1].
+	S2 = [label('INFO file has to be only file changed', reject(user(ID)))|S1].
 
 submit_rule(submit(CR, V, RV)) :-
   needs_release_verified,
