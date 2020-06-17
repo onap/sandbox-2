@@ -31,8 +31,7 @@ remove_verified_info_yaml([], []).
 remove_verified_info_yaml([label('INFO-Verified', _) | T], R) :- remove_verified_info_yaml(T, R), !.
 remove_verified_info_yaml([H|T], [H|R]) :- remove_verified_info_yaml(T, R).
 
-reject_multiple_files_if_INFO_file(S1, S2) :-
-	S2 = [label('INFO file has to be only file changed', reject(user(ID)))|S1].
+reject_multiple_files_if_INFO_file(S1, [label('INFO file has to be only file changed', need(_))|S1].
 
 submit_rule(submit(CR, V, RV)) :-
   needs_release_verified,
