@@ -12,10 +12,7 @@ add_non_author_approval(S1, [label('Non-Author-Code-Review', need(_)) | S1]).
 
 submit_filter(In, Out) :-
     In =.. [submit | Ls],
-    needs_info_verified,
-    !,
     gerrit:max_with_block(-1, 1, 'INFO-Verified', IV),
     Out =.. [submit | R].
 
-needs_info_verified :- gerrit:commit_delta('INFO.yaml'), !.
 
