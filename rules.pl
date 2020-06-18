@@ -18,5 +18,5 @@ reject_multiple_files_if_INFO_file(S1, S2) :-
 	% If you reached here, then reject with Label.
 	S2 = [label('INFO-file-has-to-be-only-file-changed', reject(0))|S1].
 
-reject_multiple_files_if_INFO_file(S1, S2).
+reject_multiple_files_if_INFO_file(S1, S1).
 
