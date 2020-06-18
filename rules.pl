@@ -23,10 +23,10 @@ reject_self_review(S1, S2) :-
     %find a +2 code review, if it exists, and set R to be the reviewer - comment sign was missing
     gerrit:commit_label(label('Code-Review', 2), R), 
     R = O, !,
-    %if there isn't a +2 from someone else (above rule), and there is a +2 from the owner, reject with a self-reviewed label
+    %if there is not a +2 from someone else (above rule), and there is a +2 from the owner, reject with a self-reviewed label
     S2 = [label('Self-Reviewed', reject(O))|S1].
 
-%if the above two rules didn't make it to the ! predicate, there aren't any +2s so let the default rules through unfiltered
+% if the above two rules did not make it to the ! predicate, there are not any +2s so let the default rules through unfiltered
 reject_self_review(S1, S1).
 
 % =============
@@ -34,20 +34,20 @@ reject_self_review(S1, S1).
 % =============
 submit_filter(In, Out) :-
 	In =.. [submit | Ls],
-	reject_multiple_files_if_INFO_file(Ls, R),
+	ensure_info_file_is_only_file(Ls, R),
+	!,
 	Out =.. [submit | R].
 
-reject_multiple_files_if_INFO_file(S1, S2) :-
-	% set 0 to be the change owner
-	gerrit:change_owner(O),
+ensure_info_file_is_only_file(S1, S2) :-
 	% Ask how many files changed
 	gerrit:commit_stats(ModifiedFiles, _, _),
 	% Check if more than 1 file has changed
 	ModifiedFiles > 1,
 	% Check if one file name is INFO.yaml
-	gerrit:commit_delta('\\INFO.yaml$'),
+	gerrit:commit_delta('INFO.yaml'),
 	% If you reached here, then reject with Label.
-	S2 = [label('INFO-file-not-unique', reject(0))|S1].
+	S2 = [label('INFO-file-not-unique', reject(user(ID)))|S1].
 
-reject_multiple_files_if_INFO_file(S1, S1).
+ensure_info_file_is_only_file(S1, S1).
+
 
