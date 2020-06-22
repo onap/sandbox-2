@@ -3,9 +3,9 @@ submit_filter(In, Out) :-
     %unpack the submit rule into a list of code reviews
     In =.. [submit | Ls],
     %add the non-owner code review requiremet
-    reject_self_review(Ls, R),
+    reject_self_review(Ls, R1),
     %Reject if multiple files and one is INFO.yaml
-    %ensure_info_file_is_only_file(Ls, R),
+    ensure_info_file_is_only_file(R1, R),
     %pack the list back up and return it (kinda)
     Out =.. [submit | R].
 
