@@ -36,6 +36,8 @@ reject_self_review(S1, S1).
 % Only allow one file to be uploaded, if file is INFO.yaml
 % =============
 ensure_info_file_is_only_file(S1, S2) :-
+    %set O to be the change owner
+    gerrit:change_owner(O),
     % Ask how many files changed
     gerrit:commit_stats(ModifiedFiles, _, _),
     % Check if more than 1 file has changed
