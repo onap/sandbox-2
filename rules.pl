@@ -46,7 +46,7 @@ ensure_info_file_is_only_file(S1, S2) :-
     % If above two statements are true, give the cut (!) predicate.
     !,
     % If you reached here, then reject with Label.
-    S2 = [label('INFO-Issue', reject(0))|S1].
+    S2 = [label('INFO-Issue', reject(O))|S1].
 
 ensure_info_file_is_only_file(S1, S1).
 
