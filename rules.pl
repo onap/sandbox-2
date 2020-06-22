@@ -44,6 +44,8 @@ ensure_info_file_is_only_file(S1, S2) :-
     ModifiedFiles > 1,
     % Check if one file name is INFO.yaml
     gerrit:commit_delta('INFO.yaml'),
+    % If above two statements are true, give the cut (!) predicate.
+    !,
     % If you reached here, then reject with Label.
     S2 = [label('INFO-file-not-unique', reject(0))|S1].
 
