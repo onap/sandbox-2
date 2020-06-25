@@ -57,7 +57,7 @@ jenkins_user(459).   % onap_jobbuilder
 jenkins_user(3).     % ecomp_jobbuilder
 jenkins_user(4937).  % releng-lf-jobbuilder
 
-if_INFO_file_require_jenkins_plus_1 (S1, S2) :-
+if_INFO_file_require_jenkins_plus_1(S1, S2) :-
     % Ask how many files changed
     gerrit:commit_stats(F),
     % Check that only 1 file is changed
@@ -72,6 +72,6 @@ if_INFO_file_require_jenkins_plus_1 (S1, S2) :-
     % Jenkins has verified file.
     S2 = [label('Verified-by-Jenkins', ok(U))|S1].
 
-if_INFO_file_require_jenkins_plus_1 (S1, S2)
+if_INFO_file_require_jenkins_plus_1(S1, S2)
     S2 = [label('Verified-by-Jenkins', need(_))|S1].
 
