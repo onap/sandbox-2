@@ -58,5 +58,20 @@ jenkins_user(3).     % ecomp_jobbuilder
 jenkins_user(4937).  % releng-lf-jobbuilder
 
 if_INFO_file_require_jenkins_plus_1(S1, S2) :-
+    % Ask how many files changed
+    gerrit:commit_stats(F),
+    % Check that only 1 file is changed
+    F = 1,
+    % Check if changed file name is INFO.yaml
+    gerrit:commit_delta('\\.INFO.yaml$'),
+    % Check that Verified is set to +1
+    gerrit:commit_label(label('Verified', 1), U),
+    % Confirm correct user gave the +1
+    jenkins_user(U),
+    !,
+    % Jenkins has verified file.
+    S2 = [label('Verified-by-Jenkins', ok(U))|S1].
+
+if_INFO_file_require_jenkins_plus_1(S1, S2) :-
     S2 = [label('Verified-by-Jenkins', need(_))|S1].
 
