@@ -5,8 +5,6 @@ submit_filter(In, Out) :-
     reject_self_review(Ls, R1),
     %Reject if multiple files and one is INFO.yaml
     ensure_info_file_is_only_file(R1, R2),
-    %Reject if not INFO file has been verified by Jenkins
-    % if_INFO_file_require_jenkins_plus_1(R2, R),
     Out =.. [submit | R].
 
 reject_self_review(S1, S2) :-
@@ -56,22 +54,4 @@ ensure_info_file_is_only_file(S1, S1).
 jenkins_user(459).   % onap_jobbuilder
 jenkins_user(3).     % ecomp_jobbuilder
 jenkins_user(4937).  % releng-lf-jobbuilder
-
-if_INFO_file_require_jenkins_plus_1(S1, S2) :-
-    % Ask how many files changed
-    gerrit:commit_stats(F),
-    % Check that only 1 file is changed
-    F = 1,
-    % Check if changed file name is INFO.yaml
-    gerrit:commit_delta('\\.INFO.yaml$'),
-    % Check that Verified is set to +1
-    gerrit:commit_label(label('Verified', 1), U),
-    % Confirm correct user gave the +1
-    jenkins_user(U),
-    !,
-    % Jenkins has verified file.
-    S2 = [label('Verified-by-Jenkins', ok(U))|S1].
-
-if_INFO_file_require_jenkins_plus_1(S1, S2)
-    S2 = [label('Verified-by-Jenkins', need(_))|S1].
 
