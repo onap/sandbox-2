@@ -4,9 +4,9 @@ submit_filter(In, Out) :-
     %add the non-owner code review requiremet
     reject_self_review(Ls, R1),
     %Reject if multiple files and one is INFO.yaml
-    ensure_info_file_is_only_file(R1, R2),
+    ensure_info_file_is_only_file(R1, R),
     %Reject if not INFO file has been verified by Jenkins
-    if_info_file_require_jenkins_plus_1(R2, R),
+    %if_info_file_require_jenkins_plus_1(R2, R),
     Out =.. [submit | R].
 
 reject_self_review(S1, S2) :-
