@@ -5,8 +5,8 @@ submit_filter(In, Out) :-
     reject_self_review(Ls, R1),
     %Reject if multiple files and one is INFO.yaml
     ensure_info_file_is_only_file(R1, R2),
-	%Reject if not INFO file has been verified by Jenkins
-	set_verified_by_jenkins(R2, R)
+    %Reject if not INFO file has been verified by Jenkins
+    if_INFO_file_require_jenkins_plus_1(R2, R)
     Out =.. [submit | R].
 
 reject_self_review(S1, S2) :-
