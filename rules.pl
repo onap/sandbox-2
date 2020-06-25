@@ -72,3 +72,5 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     S2 = [label('Verified-by-Jenkins', need(_))|S1].
+
+if_info_file_require_jenkins_plus_1(S1, S1).
