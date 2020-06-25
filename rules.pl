@@ -64,11 +64,11 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Check that only 1 file is changed
     ModififedFiled = 1,
     % Check if changed file name is INFO.yaml
-    %%gerrit:commit_delta('\\.INFO.yaml$'),
+    gerrit:commit_delta('\\.INFO.yaml$'),
     % Check that Verified is set to +1
-    %%gerrit:commit_label(label('Verified', 1), U),
+    gerrit:commit_label(label('Verified', 1), U),
     % Confirm correct user gave the +1
-    %%jenkins_user(U),
+    jenkins_user(U),
     !,
     % Jenkins has verified file.
     S2 = [label('Verified-by-Jenkins', ok(O))|S1].
