@@ -4,7 +4,9 @@ submit_filter(In, Out) :-
     %add the non-owner code review requiremet
     reject_self_review(Ls, R1),
     %Reject if multiple files and one is INFO.yaml
-    ensure_info_file_is_only_file(R1, R),
+    ensure_info_file_is_only_file(R1, R2),
+    %Reject if not INFO file has been verified by Jenkins
+    if_info_file_require_jenkins_plus_1(R2, R),
     Out =.. [submit | R].
 
 reject_self_review(S1, S2) :-
@@ -54,4 +56,7 @@ ensure_info_file_is_only_file(S1, S1).
 jenkins_user(459).   % onap_jobbuilder
 jenkins_user(3).     % ecomp_jobbuilder
 jenkins_user(4937).  % releng-lf-jobbuilder
+
+if_INFO_file_require_jenkins_plus_1(S1, S2)
+    S2 = [label('Verified-by-Jenkins', need(_))|S1].
 
