@@ -1,12 +1,12 @@
 %filter to require all projects to have a code-reviewer other than the owner
 submit_filter(In, Out) :-
-    %unpack the submit rule into a list of code reviews
     In =.. [submit | Ls],
     %add the non-owner code review requiremet
     reject_self_review(Ls, R1),
     %Reject if multiple files and one is INFO.yaml
-    ensure_info_file_is_only_file(R1, R),
-    %pack the list back up and return it (kinda)
+    ensure_info_file_is_only_file(R1, R2),
+	%Reject if not INFO file has been verified by Jenkins
+	set_verified_by_jenkins(R2, R)
     Out =.. [submit | R].
 
 reject_self_review(S1, S2) :-
@@ -31,6 +31,7 @@ reject_self_review(S1, S2) :-
 % if the above two rules did not make it to the ! predicate, there are not any +2s so let the default rules through unfiltered
 reject_self_review(S1, S1).
 
+
 % =============
 % Only allow one file to be uploaded, if file is INFO.yaml
 % =============
@@ -44,9 +45,6 @@ ensure_info_file_is_only_file(S1, S2) :-
     % Check if one file name is INFO.yaml
     gerrit:commit_delta('INFO.yaml'),
     % If above two statements are true, give the cut (!) predicate.
-    % !,
+    !,
     % If you reached here, then reject with Label.
-    S2 = [label('INFO-Issue', reject(O))|S1].
-
-ensure_info_file_is_only_file(S1, S1).
-
+    S2 = [label('INFO-file-not-alone', reject(O))|S1].
