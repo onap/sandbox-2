@@ -76,6 +76,6 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
-    S2 = [label('Verified-by-Jenkins',reject(O))|S1].
+    S2 = [label('Verified-by-Jenkins', need(O))|S1].
 
 
