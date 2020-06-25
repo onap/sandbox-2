@@ -4,9 +4,9 @@ submit_filter(In, Out) :-
     %add the non-owner code review requiremet
     reject_self_review(Ls, R1),
     %Reject if multiple files and one is INFO.yaml
-    ensure_info_file_is_only_file(R1, R),
+    ensure_info_file_is_only_file(R1, R2),
     %Reject if not INFO file has been verified by Jenkins
-    %if_info_file_require_jenkins_plus_1(R2, R),
+    if_info_file_require_jenkins_plus_1(R2, R),
     Out =.. [submit | R].
 
 reject_self_review(S1, S2) :-
@@ -51,7 +51,6 @@ ensure_info_file_is_only_file(S1, S2) :-
 
 ensure_info_file_is_only_file(S1, S1).
 
-
 % Define who is the special Jenkins user
 jenkins_user(459).   % onap_jobbuilder
 jenkins_user(3).     % ecomp_jobbuilder
@@ -68,7 +67,6 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     gerrit:commit_label(label('Verified', 1), U),
     % Confirm correct user gave the +1
     jenkins_user(U),
-    !,
     % Jenkins has verified file.
     S2 = [label('Verified-by-Jenkins', ok(U))|S1].
 
