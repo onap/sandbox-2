@@ -52,7 +52,7 @@ ensure_info_file_is_only_file(S1, S2) :-
 ensure_info_file_is_only_file(S1, S1).
 
 % Define who is the special Jenkins user
-jenkins_user(459).   % onap_jobbuilder
+jenkins_user(user(459)).   % onap_jobbuilder
 %jenkins_user(3).     % ecomp_jobbuilder
 %jenkins_user(4937).  % releng-lf-jobbuilder
 
