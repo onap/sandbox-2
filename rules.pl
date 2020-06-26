@@ -53,8 +53,8 @@ ensure_info_file_is_only_file(S1, S1).
 
 % Define who is the special Jenkins user
 jenkins_user(user(459)).   % onap_jobbuilder
-%jenkins_user(3).     % ecomp_jobbuilder
-%jenkins_user(4937).  % releng-lf-jobbuilder
+jenkins_user(user(3)).     % ecomp_jobbuilder
+enkins_user(iuser(4937)).  % releng-lf-jobbuilder
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
@@ -69,7 +69,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     gerrit:commit_label(label('Verified', 1), U),
     % Confirm correct user gave the +1
     jenkins_user(U),
-    %%!,
+    !,
     % Jenkins has verified file.
     S2 = [label('Verified-by-Jenkins', ok(O))|S1].
 
