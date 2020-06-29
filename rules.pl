@@ -71,8 +71,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     jenkins_user(U),
     !,
     % Jenkins has verified file.
-    %S2 = [label('Verified-by-Jenkins', ok(O))|S1].
-    S2 = [label('Verified-by-Jenkins', need(O))|S1].
+    S2 = [label('Verified-by-Jenkins', ok(O))|S1].
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
