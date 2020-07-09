@@ -57,18 +57,26 @@ ensure_info_file_is_only_file(S1, S1).
 % =============
 % Filter to require approved jenkins user to give +1 if INFO file
 % =============
+% Define who is the special Jenkins user
 jenkins_user(user(459)).   % onap_jobbuilder
 jenkins_user(user(3)).     % ecomp_jobbuilder
 jenkins_user(user(4937)).  % releng-lf-jobbuilder
 
-if_info_file_require_jenkins_plus_1(S1, S2) :-
-    %set O to be the change owner
-    gerrit:change_owner(O),
+is_it_only_INFO_file() :-
     % Ask how many files changed
     gerrit:commit_stats(ModifiedFiles, _, _),
     % Check that only 1 file is changed
     ModifiedFiles = 1,
     % Check if changed file name is INFO.yaml
+    gerrit:commit_delta('^INFO.yaml$').
+
+if_info_file_require_jenkins_plus_1(S1, S2) :-
+    %set O to be the change owner
+    gerrit:change_owner(O),
+    % Check if only INFO file is changed.
+    %is_it_only_INFO_file(),
+    gerrit:commit_stats(ModifiedFiles, _, _),
+    ModifiedFiles = 1,
     gerrit:commit_delta('^INFO.yaml$'),
     % Check that Verified is set to +1
     gerrit:commit_label(label('Verified', 1), U),
@@ -81,12 +89,11 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
-    % Ask how many files changed
-    gerrit:commit_stats(ModifiedFiles, _, _),
-    % Check that only 1 file is changed
-    ModifiedFiles = 1,
-    % Check if changed file name is INFO.yaml
-    gerrit:commit_delta('^INFO.yaml$'),
+    % Check if only INFO file is changed.
+    is_it_only_INFO_file(),
+    %gerrit:commit_stats(ModifiedFiles, _, _),
+    %ModifiedFiles = 1,
+    %gerrit:commit_delta('^INFO.yaml$'),
     !,
     S2 = [label('Verified-by-Jenkins', need(O))|S1].
 
