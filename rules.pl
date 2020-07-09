@@ -68,7 +68,7 @@ is_it_only_INFO_file() :-
     % Check that only 1 file is changed
     ModifiedFiles = 1,
     % Check if changed file name is INFO.yaml
-    gerrit:commit_delta('^INFO.yaml$'),
+    gerrit:commit_delta('^INFO.yaml$').
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Check if only INFO file is changed.
