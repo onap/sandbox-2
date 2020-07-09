@@ -38,8 +38,6 @@ reject_self_review(S1, S1).
 % Filter to require one file to be uploaded, if file is INFO.yaml
 % =============
 ensure_info_file_is_only_file(S1, S2) :-
-    %set O to be the change owner
-    gerrit:change_owner(O),
     % Ask how many files changed
     gerrit:commit_stats(ModifiedFiles, _, _),
     % Check if more than 1 file has changed
@@ -48,6 +46,8 @@ ensure_info_file_is_only_file(S1, S2) :-
     gerrit:commit_delta('^INFO.yaml$'),
     % If above two statements are true, give the cut (!) predicate.
     !,
+    %set O to be the change owner
+    gerrit:change_owner(O),
     % If you reached here, then reject with Label.
     S2 = [label('INFO-file-not-alone', reject(O))|S1].
 
@@ -68,11 +68,9 @@ is_it_only_INFO_file() :-
     % Check that only 1 file is changed
     ModifiedFiles = 1,
     % Check if changed file name is INFO.yaml
-    gerrit:commit_delta('^INFO.yaml$').
+    gerrit:commit_delta('^INFO.yaml$'),
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
-    %set O to be the change owner
-    gerrit:change_owner(O),
     % Check if only INFO file is changed.
     is_it_only_INFO_file(),
     % Check that Verified is set to +1
@@ -80,12 +78,12 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Confirm correct user gave the +1
     jenkins_user(U),
     !,
+    %set O to be the change owner
+    gerrit:change_owner(O),
     % Jenkins has verified file.
     S2 = [label('Verified-by-Jenkins', ok(O))|S1].
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
-    %set O to be the change owner
-    gerrit:change_owner(O),
     % Check if only INFO file is changed.
     is_it_only_INFO_file(),
     % Check if Verified failed (-1) +1
@@ -93,17 +91,18 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Confirm correct user gave the -1
     jenkins_user(U),
     !,
-    % Jenkins has verified file.
+    %set O to be the change owner
+    gerrit:change_owner(O),
+    % Jenkins failed verifying file.
     S2 = [label('Verified-by-Jenkins', reject(O))|S1].
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
-    %set O to be the change owner
-    gerrit:change_owner(O),
     % Check if only INFO file is changed.
     is_it_only_INFO_file(),
     !,
+    %set O to be the change owner
+    gerrit:change_owner(O),
     S2 = [label('Verified-by-Jenkins', need(O))|S1].
 
 if_info_file_require_jenkins_plus_1(S1, S1).
-
 
