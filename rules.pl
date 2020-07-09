@@ -1,4 +1,3 @@
-%filter to require all projects to have a code-reviewer other than the owner
 submit_filter(In, Out) :-
     In =.. [submit | Ls],
     %add the non-owner code review requiremet
@@ -9,6 +8,9 @@ submit_filter(In, Out) :-
     if_info_file_require_jenkins_plus_1(R2, R),
     Out =.. [submit | R].
 
+% =============
+%filter to require all projects to have a code-reviewer other than the owner
+% =============
 reject_self_review(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
@@ -33,7 +35,7 @@ reject_self_review(S1, S1).
 
 
 % =============
-% Only allow one file to be uploaded, if file is INFO.yaml
+% Filter to require one file to be uploaded, if file is INFO.yaml
 % =============
 ensure_info_file_is_only_file(S1, S2) :-
     %set O to be the change owner
@@ -51,7 +53,10 @@ ensure_info_file_is_only_file(S1, S2) :-
 
 ensure_info_file_is_only_file(S1, S1).
 
-% Define who is the special Jenkins user
+
+% =============
+% Filter to require approved jenkins user to give +1 if INFO file
+% =============
 jenkins_user(user(459)).   % onap_jobbuilder
 jenkins_user(user(3)).     % ecomp_jobbuilder
 jenkins_user(user(4937)).  % releng-lf-jobbuilder
