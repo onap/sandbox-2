@@ -1,4 +1,3 @@
-%filter to require all projects to have a code-reviewer other than the owner
 submit_filter(In, Out) :-
     In =.. [submit | Ls],
     %add the non-owner code review requiremet
@@ -9,6 +8,9 @@ submit_filter(In, Out) :-
     if_info_file_require_jenkins_plus_1(R2, R),
     Out =.. [submit | R].
 
+% =============
+%filter to require all projects to have a code-reviewer other than the owner
+% =============
 reject_self_review(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
@@ -33,7 +35,7 @@ reject_self_review(S1, S1).
 
 
 % =============
-% Only allow one file to be uploaded, if file is INFO.yaml
+% Filter to require one file to be uploaded, if file is INFO.yaml
 % =============
 ensure_info_file_is_only_file(S1, S2) :-
     %set O to be the change owner
@@ -51,20 +53,28 @@ ensure_info_file_is_only_file(S1, S2) :-
 
 ensure_info_file_is_only_file(S1, S1).
 
+
+% =============
+% Filter to require approved jenkins user to give +1 if INFO file
+% =============
 % Define who is the special Jenkins user
 jenkins_user(user(459)).   % onap_jobbuilder
 jenkins_user(user(3)).     % ecomp_jobbuilder
 jenkins_user(user(4937)).  % releng-lf-jobbuilder
 
-if_info_file_require_jenkins_plus_1(S1, S2) :-
-    %set O to be the change owner
-    gerrit:change_owner(O),
+is_it_only_INFO_file() :-
     % Ask how many files changed
     gerrit:commit_stats(ModifiedFiles, _, _),
     % Check that only 1 file is changed
     ModifiedFiles = 1,
     % Check if changed file name is INFO.yaml
     gerrit:commit_delta('^INFO.yaml$'),
+
+if_info_file_require_jenkins_plus_1(S1, S2) :-
+    %set O to be the change owner
+    gerrit:change_owner(O),
+    % Check if only INFO file is changed.
+    is_it_only_INFO_file(),
     % Check that Verified is set to +1
     gerrit:commit_label(label('Verified', 1), U),
     % Confirm correct user gave the +1
@@ -76,12 +86,8 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
-    % Ask how many files changed
-    gerrit:commit_stats(ModifiedFiles, _, _),
-    % Check that only 1 file is changed
-    ModifiedFiles = 1,
-    % Check if changed file name is INFO.yaml
-    gerrit:commit_delta('^INFO.yaml$'),
+    % Check if only INFO file is changed.
+    is_it_only_INFO_file(),
     !,
     S2 = [label('Verified-by-Jenkins', need(O))|S1].
 
