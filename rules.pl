@@ -62,7 +62,7 @@ jenkins_user(user(459)).   % onap_jobbuilder
 jenkins_user(user(3)).     % ecomp_jobbuilder
 jenkins_user(user(4937)).  % releng-lf-jobbuilder
 
-is_it_only_INFO_file() :-
+is_it_only_INFO_file(S1, S2) :-
     % Ask how many files changed
     gerrit:commit_stats(ModifiedFiles, _, _),
     % Check that only 1 file is changed
@@ -74,7 +74,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
     % Check if only INFO file is changed.
-    %is_it_only_INFO_file(),
+    %is_it_only_INFO_file(S1, S2),
     % Ask how many files changed
     gerrit:commit_stats(ModifiedFiles, _, _),
     % Check that only 1 file is changed
@@ -93,7 +93,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
     % Check if only INFO file is changed.
-    is_it_only_INFO_file(),
+    is_it_only_INFO_file(S1, S2),
     % gerrit:commit_stats(ModifiedFiles, _, _),
     % Check that only 1 file is changed
     % ModifiedFiles = 1,
