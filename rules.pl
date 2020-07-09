@@ -74,10 +74,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
     % Check if only INFO file is changed.
-    %is_it_only_INFO_file(),
-    gerrit:commit_stats(ModifiedFiles, _, _),
-    ModifiedFiles = 1,
-    gerrit:commit_delta('^INFO.yaml$'),
+    is_it_only_INFO_file(),
     % Check that Verified is set to +1
     gerrit:commit_label(label('Verified', 1), U),
     % Confirm correct user gave the +1
@@ -91,9 +88,6 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     gerrit:change_owner(O),
     % Check if only INFO file is changed.
     is_it_only_INFO_file(),
-    %gerrit:commit_stats(ModifiedFiles, _, _),
-    %ModifiedFiles = 1,
-    %gerrit:commit_delta('^INFO.yaml$'),
     !,
     S2 = [label('Verified-by-Jenkins', need(O))|S1].
 
