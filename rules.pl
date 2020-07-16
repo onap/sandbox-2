@@ -61,7 +61,7 @@ ensure_info_file_is_only_file(S1, S1).
 %jenkins_user(user(459)).   % onap_jobbuilder
 %jenkins_user(user(3)).     % ecomp_jobbuilder
 %jenkins_user(user(4937)).  % releng-lf-jobbuilder
-jenkins_user(U) :- regex_matches('.*jobbuilder.*', U).
+jenkins_user(U) :- regex_matches('jobbuilder', U).
 
 
 is_it_only_INFO_file() :-
