@@ -85,7 +85,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Jenkins has verified file.
     %S2 = [label('Verified-By-Jenkins', ok(O))|S1].
     %S2 = [label(U, ok(O))|S1].
-    %S2 = [label(user(459), ok(O))|S1].
+    S2 = [label(user(459), ok(O))|S1].
 
 
 
