@@ -49,7 +49,7 @@ ensure_info_file_is_only_file(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
     % If you reached here, then reject with Label.
-    S2 = [label('INFO-file-not-alone', reject(O))|S1].
+    S2 = [label('INFO-File-Not-Alone', reject(O))|S1].
 
 ensure_info_file_is_only_file(S1, S1).
 
@@ -81,7 +81,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
     % Jenkins has verified file.
-    S2 = [label('Verified-by-Jenkins', ok(O))|S1].
+    S2 = [label('Verified-By-Jenkins', ok(O))|S1].
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Check if only INFO file is changed.
@@ -94,7 +94,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     %set O to be the change owner
     gerrit:change_owner(O),
     % Jenkins failed verifying file.
-    S2 = [label('Verified-by-Jenkins', reject(O))|S1].
+    S2 = [label('Verified-By-Jenkins', reject(O))|S1].
 
 if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Check if only INFO file is changed.
@@ -102,7 +102,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     !,
     %set O to be the change owner
     gerrit:change_owner(O),
-    S2 = [label('Verified-by-Jenkins', need(O))|S1].
+    S2 = [label('Verified-By-Jenkins', need(O))|S1].
 
 if_info_file_require_jenkins_plus_1(S1, S1).
 
