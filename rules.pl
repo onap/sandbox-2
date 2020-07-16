@@ -58,7 +58,7 @@ ensure_info_file_is_only_file(S1, S1).
 % Filter to require approved jenkins user to give +1 if INFO file
 % =============
 % Define who is the special Jenkins user
-%jenkins_user(user(459)).   % onap-jobbuilder@jenkins.onap.org
+jenkins_user(user(459)).   % onap-jobbuilder@jenkins.onap.org
 %jenkins_user(user(3)).     % ecomp-jobbuilder@jenkins.openecomp.org
 %jenkins_user(user(4937)).  % releng+lf-jobbuilder@linuxfoundation.org
 jenkins_user(U) :- regex_matches('.*', U).
