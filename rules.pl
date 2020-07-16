@@ -77,7 +77,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     gerrit:commit_label(label('Verified', 1), U),
     % Confirm correct user gave the +1
     %jenkins_user(U),
-    jenkins_user(U) :- regex_matches('.*jobbuilder@jenkins.onap.org', U),
+    jenkins_user(U) :- regex_matches('.*jobbuilder.*', U),
     !,
     %set O to be the change owner
     gerrit:change_owner(O),
@@ -91,7 +91,7 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     gerrit:commit_label(label('Verified', -1), U),
     % Confirm correct user gave the -1
     %jenkins_user(U),
-    jenkins_user(U) :- regex_matches('.*jobbuilder@jenkins.onap.org', U),
+    jenkins_user(U) :- regex_matches('.*jobbuilder.*', U),
     !,
     %set O to be the change owner
     gerrit:change_owner(O),
