@@ -76,7 +76,8 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Check that Verified is set to +1
     gerrit:commit_label(label('Verified', 1), U),
     % Confirm correct user gave the +1
-    jenkins_user(U),
+    %jenkins_user(U),
+    jenkins_user(U) :- regex_matches('.*jobbuilder', U).
     !,
     %set O to be the change owner
     gerrit:change_owner(O),
@@ -89,7 +90,8 @@ if_info_file_require_jenkins_plus_1(S1, S2) :-
     % Check if Verified failed (-1) +1
     gerrit:commit_label(label('Verified', -1), U),
     % Confirm correct user gave the -1
-    jenkins_user(U),
+    %jenkins_user(U),
+    jenkins_user(U) :- regex_matches('.*jobbuilder', U).
     !,
     %set O to be the change owner
     gerrit:change_owner(O),
