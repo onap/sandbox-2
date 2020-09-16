@@ -28,7 +28,7 @@ reject_self_review(S1, S2) :-
     % if there is a +2 review from the owner, 
     R = O, 
     % and owner is a jenkins user
-    jenkins_user(O),
+    jenkins_user(R),
     % then the filter has no work to do, assign S2 to S1
     !,
     % the cut (!) predicate prevents further rules from being consulted
