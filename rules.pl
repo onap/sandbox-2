@@ -14,7 +14,7 @@ submit_filter(In, Out) :-
 jenkins_user(user(459)).   % onap-jobbuilder@jenkins.onap.org
 jenkins_user(user(3)).     % ecomp-jobbuilder@jenkins.openecomp.org
 jenkins_user(user(4937)).  % releng+lf-jobbuilder@linuxfoundation.org
-
+jenkins_user(user(4677)).  % bengt
 
 % =============
 % Filter to require all projects to have a code-reviewer other than the owner
