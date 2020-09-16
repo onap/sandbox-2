@@ -21,15 +21,16 @@ jenkins_user(user(4677)).  % bengt
 % Exception for Jenkins User ONLY.
 % =============
 reject_self_review(S1, S2) :-
-    % set O to be the change owner
-    gerrit:change_owner(O),
+    % set O to be the commit author
+    gerrit:commit_author(C),
     % find a +2 code review, if it exists, and set R to be the reviewer
     gerrit:commit_label(label('Code-Review', 2), R),
     % if there is a +2 review from the owner, 
-    R = O, 
+    R = C, 
     % and owner is a jenkins user
+    jenkins_user(R), 
     % then the filter has no work to do, assign S2 to S1
-    jenkins_user(R), !,
+    !,
     % the cut (!) predicate prevents further rules from being consulted
     S2 = S1.
     
