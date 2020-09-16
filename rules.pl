@@ -28,9 +28,8 @@ reject_self_review(S1, S2) :-
     % if there is a +2 review from the owner, 
     R = O, 
     % and owner is a jenkins user
-    jenkins_user(R),
     % then the filter has no work to do, assign S2 to S1
-    !,
+    jenkins_user(R), !,
     % the cut (!) predicate prevents further rules from being consulted
     S2 = S1.
     
@@ -55,7 +54,7 @@ reject_self_review(S1, S2) :-
     % and there is a +2 from the owner, reject with a self-reviewed label
     S2 = [label('Self-Reviewed', reject(O))|S1].
 
-% if the above two rules did not make it to the ! predicate, 
+% if the above three rules did not make it to the ! predicate, 
 % there are not any +2s so let the default rules through unfiltered
 reject_self_review(S1, S1).
 
