@@ -9,31 +9,8 @@ submit_filter(In, Out) :-
     Out =.. [submit | R].
 
 % =============
-% Define who is the special Jenkins user
+%filter to require all projects to have a code-reviewer other than the owner
 % =============
-jenkins_user(user(459)).   % onap-jobbuilder@jenkins.onap.org
-jenkins_user(user(3)).     % ecomp-jobbuilder@jenkins.openecomp.org
-jenkins_user(user(4937)).  % releng+lf-jobbuilder@linuxfoundation.org
-jenkins_user(user(4677)).  % bengt
-
-% =============
-% Filter to require all projects to have a code-reviewer other than the owner
-% Exception for Jenkins User ONLY.
-% =============
-reject_self_review(S1, S2) :-
-    % set O to be the commit author
-    gerrit:commit_author(C),
-    % find a +2 code review, if it exists, and set R to be the reviewer
-    gerrit:commit_label(label('Code-Review', 2), R),
-    % if there is a +2 review from the owner, 
-    R = C, 
-    % and owner is a jenkins user
-    jenkins_user(R), 
-    % then the filter has no work to do, assign S2 to S1
-    !,
-    % the cut (!) predicate prevents further rules from being consulted
-    S2 = S1.
-    
 reject_self_review(S1, S2) :-
     % set O to be the change owner
     gerrit:change_owner(O),
@@ -55,7 +32,7 @@ reject_self_review(S1, S2) :-
     % and there is a +2 from the owner, reject with a self-reviewed label
     S2 = [label('Self-Reviewed', reject(O))|S1].
 
-% if the above three rules did not make it to the ! predicate, 
+% if the above two rules did not make it to the ! predicate, 
 % there are not any +2s so let the default rules through unfiltered
 reject_self_review(S1, S1).
 
@@ -83,6 +60,12 @@ ensure_info_file_is_only_file(S1, S1).
 % =============
 % Filter to require approved jenkins user to give +1 if INFO file
 % =============
+% Define who is the special Jenkins user
+jenkins_user(user(459)).   % onap-jobbuilder@jenkins.onap.org
+jenkins_user(user(3)).     % ecomp-jobbuilder@jenkins.openecomp.org
+jenkins_user(user(4937)).  % releng+lf-jobbuilder@linuxfoundation.org
+
+
 is_it_only_INFO_file() :-
     % Ask how many files changed
     gerrit:commit_stats(ModifiedFiles, _, _),
