@@ -3,4 +3,3 @@
 7c0f2e5223b6fa638b4a75932a6080e9801509f9                    	Release Engineering Team
 89d362029514c4ee83998322389ebd87042c5519                    	saml/lf-gerrit-transfer
 daebbf523be390041a1a9c0e340a6d833aae5043                    	GitHub Replication
-ldap:cn=lf-gerrit-transfer,ou=Groups,dc=freestandards,dc=org	ldap/lf-gerrit-transfer
